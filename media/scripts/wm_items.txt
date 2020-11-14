@@ -1,0 +1,13 @@
+module pzwm
+{
+	item Walkman
+	{
+		Type				= Drainable,
+		UseDelta			= 0.0,
+		Weight				= 0.3,
+		DisplayName			= Walkman,
+		ActivatedItem		= NO,
+		cantBeConsolided	= TRUE,
+		Icon				= Walkman,
+	}
+}
