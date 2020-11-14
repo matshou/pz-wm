@@ -1,0 +1,8 @@
+name=Walkman
+poster=poster.png
+description=Portable cassette player.
+
+id=pz-walkman
+url=https://github.com/yooksi/pz-walkman
+modversion=1.0
+pzversion=41.45
