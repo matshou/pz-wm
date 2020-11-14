@@ -8,6 +8,7 @@ module pzwm
 		DisplayName			= Walkman,
 		ActivatedItem		= NO,
 		cantBeConsolided	= TRUE,
+		ScaleWorldIcon		= 0.5,
 		Icon				= Walkman,
 	}
 }
