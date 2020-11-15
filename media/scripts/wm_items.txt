@@ -11,4 +11,31 @@ module pzwm
 		ScaleWorldIcon		= 0.5,
 		Icon				= Walkman,
 	}
+
+	item Cassette
+	{
+		Type				= Normal,
+		DisplayName			= Cassette,
+		ScaleWorldIcon		= 0.5,
+		Icon				= Cassette,
+		Weight				= 0.02,
+	}
+
+	item CassetteCaseEmpty
+	{
+		Type				= Normal,
+		DisplayName			= Empty Cassette Case,
+		ScaleWorldIcon		= 0.5,
+		Icon				= CassetteCaseEmpty,
+		Weight				= 0.02,
+	}
+
+	item CassetteCaseFull
+	{
+		Type				= Normal,
+		DisplayName			= Cassette Case,
+		ScaleWorldIcon		= 0.5,
+		Icon				= CassetteCaseFull,
+		Weight				= 0.04,
+	}
 }
