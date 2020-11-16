@@ -1,0 +1,31 @@
+module pz-wm
+{
+	imports { Base }
+
+	recipe Insert Battery into Walkman
+	{
+		destroy Walkman,
+		destroy Battery,
+		Result:Walkman,
+
+		Time:30.0,
+	   	Category:Device,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:false,
+		OnTest:Recipe_InsertBatteryIntoCassettePlayer_TestIsValid,
+		OnCreate:Recipe_InsertBatteryIntoCassettePlayer,
+	}
+
+	recipe Remove Battery from Walkman
+	{
+		keep Walkman,
+		Result:Battery,
+
+		Time:30.0,
+	   	Category:Device,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:false,
+		OnTest:Recipe_RemoveBatteryIntoCassettePlayer_TestIsValid,
+		OnCreate:Recipe_RemoveBatteryIntoCassettePlayer,
+	}
+}
