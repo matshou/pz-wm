@@ -1,4 +1,4 @@
-module pz-wm
+module WM
 {
 	imports { Base }
 

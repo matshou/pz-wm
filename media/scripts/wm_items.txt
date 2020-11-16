@@ -1,4 +1,4 @@
-module pzwm
+module WM
 {
 	item Walkman
 	{
