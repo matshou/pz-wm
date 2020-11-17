@@ -18,7 +18,7 @@ module WM
 		DisplayName			= Cassette Player,
 		ScaleWorldIcon		= 0.5,
 		Icon				= Walkman,
-		Weight				= 0.05,
+		Weight				= 0.3,
 	}
 
 	item Cassette
@@ -36,7 +36,7 @@ module WM
 		DisplayName			= Empty Cassette Case,
 		ScaleWorldIcon		= 0.5,
 		Icon				= CassetteCaseEmpty,
-		Weight				= 0.02,
+		Weight				= 0.05,
 	}
 
 	item CassetteCaseFull
@@ -45,6 +45,6 @@ module WM
 		DisplayName			= Cassette Case,
 		ScaleWorldIcon		= 0.5,
 		Icon				= CassetteCaseFull,
-		Weight				= 0.04,
+		Weight				= 0.07,
 	}
 }
