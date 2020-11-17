@@ -1,0 +1,2 @@
+CASSETTE_TAPE = {};
+
