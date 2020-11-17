@@ -9,7 +9,7 @@ module WM
 		Result:Walkman,
 
 		Time:30.0,
-	   	Category:Device,
+		Category:Device,
 		NeedToBeLearn:false,
 		CanBeDoneFromFloor:false,
 		OnTest:Recipe_InsertBatteryIntoCassettePlayer_TestIsValid,
@@ -22,7 +22,7 @@ module WM
 		Result:Battery,
 
 		Time:30.0,
-	   	Category:Device,
+		Category:Device,
 		NeedToBeLearn:false,
 		CanBeDoneFromFloor:false,
 		OnTest:Recipe_RemoveBatteryIntoCassettePlayer_TestIsValid,
