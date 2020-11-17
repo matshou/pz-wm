@@ -11,3 +11,6 @@ function InitCassetteItem(item)
 	return data;
 end
 
+function getCassetteName(num)
+	return CASSETTE_TAPE[num].tape_name;
+end

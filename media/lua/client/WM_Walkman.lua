@@ -1,3 +1,7 @@
+function isCassetteInserted(data)
+	return data and data.tape_num > 0;
+end
+
 function InitWalkmanItem(player, item)
 
 	local inventory = player:getInventory();
