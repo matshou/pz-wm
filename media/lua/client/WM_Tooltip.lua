@@ -30,7 +30,7 @@ function ISToolTipInv:render()
 				tt_state = tostring(tape_state[1] .. ": Track " .. data.track_num);
 				tt_lines = 2;
 			else
-				tt_lines = 1, "Insert cassette tape";
+				tt_lines, tt_title = 1, "Insert cassette tape";
 			end
 		else
 			tt_lines, tt_color = 1, TT_COLOR[2];
