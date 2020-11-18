@@ -29,19 +29,22 @@ end
 
 function Recipe_InsertBatteryIntoCassettePlayer(items, result, player)
 
-	local battery, cPlayer = items:get(0), items:get(1);
+	local battery, device = items:get(0), items:get(1);
 
 	-- transfer battery power to cassette player
-	cPlayer:setUsedDelta(battery:getUsedDelta());
+	device:setUsedDelta(battery:getUsedDelta());
+
+	-- copy mod data from ingredient to result
+	result:CopyModData(device:getModData());
 end
 
 function Recipe_RemoveBatteryIntoCassettePlayer(items, result, player)
 
-	local cPlayer = items:get(0);
+	local device = items:get(0);
 
 	-- transfer power from cassette player to battery
-	result:setUsedDelta(cPlayer:getUsedDelta());
-	cPlayer:setUsedDelta(0);
+	result:setUsedDelta(device:getUsedDelta());
+	device:setUsedDelta(0);
 end
 
 function Recipe_InsertCassetteIntoCassettePlayer(items, result, player)
