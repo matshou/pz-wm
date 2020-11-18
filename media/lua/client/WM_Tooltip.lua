@@ -65,6 +65,36 @@ function ISToolTipInv:render()
 			end
 			return old_drawRectBorder(self, ...);
 		end
+	elseif item_name == "Cassette" and self.item:hasModData() then
+
+		local tt_text_artist = tostring("Artist: " .. CASSETTE_TAPE[data.num].artist_name);
+		local tt_text_album = tostring("Album: " .. CASSETTE_TAPE[data.num].album_title);
+
+		local stage, height = 1, 0;
+		local tt_height = 2 * TT_LINE_HEIGHT;
+
+		local old_setHeight = self.setHeight
+		self.setHeight = function(self, num, ...)
+			if stage == 1 then
+				stage, height = 2, num;
+				num = num + tt_height;
+			end
+			return old_setHeight(self, num, ...);
+		end
+
+		local old_drawRectBorder = self.drawRectBorder
+		self.drawRectBorder = function(self, ...)
+			if stage == 2 then
+				local r, g, b = TT_COLOR[3][1], TT_COLOR[3][2], TT_COLOR[3][3];
+				-- artist name
+				self.tooltip:DrawText(UIFont.Small, tt_text_artist, 5, height-4, r, g, b, 1);
+				-- album title
+				self.tooltip:DrawText(UIFont.Small, tt_text_album, 5, height+11, r, g, b, 1);
+				-- end drawing tooltip
+				stage = 3;
+			end
+			return old_drawRectBorder(self, ...);
+		end
 	end
 	return old_render(self);
 end
