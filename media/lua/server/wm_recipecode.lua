@@ -32,4 +32,8 @@ function Recipe_RemoveBatteryIntoCassettePlayer(items, result, player)
 	-- transfer power from cassette player to battery
 	result:setUsedDelta(cPlayer:getUsedDelta());
 	cPlayer:setUsedDelta(0);
+function Recipe_RemoveCassetteFromCase(items, result, player)
+
+	player:getInventory():AddItem("WM.CassetteCaseEmpty");
+	InitCassetteItem(result);
 end

@@ -28,4 +28,15 @@ module WM
 		OnTest:Recipe_RemoveBatteryIntoCassettePlayer_TestIsValid,
 		OnCreate:Recipe_RemoveBatteryIntoCassettePlayer,
 	}
+	recipe Remove Cassette from Case
+	{
+		destroy CassetteCaseFull,
+		Result:Cassette,
+
+		Time:15.0,
+		Category:Device,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:false,
+		OnCreate:Recipe_RemoveCassetteFromCase,
+	}
 }
