@@ -28,6 +28,21 @@ module WM
 		OnTest:Recipe_RemoveBatteryIntoCassettePlayer_TestIsValid,
 		OnCreate:Recipe_RemoveBatteryIntoCassettePlayer,
 	}
+
+	recipe Insert Cassette into Walkman
+	{
+		destroy Cassette,
+		destroy Walkman,
+		Result:Walkman,
+
+		Time:30.0,
+		Category:Device,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:false,
+		OnTest:Recipe_InsertCassetteIntoCassettePlayer_TestIsValid,
+		OnCreate:Recipe_InsertCassetteIntoCassettePlayer,
+	}
+
 	recipe Remove Cassette from Case
 	{
 		destroy CassetteCaseFull,
