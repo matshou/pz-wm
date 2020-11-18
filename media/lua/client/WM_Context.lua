@@ -3,7 +3,7 @@ local function AddContextOption(player, context, item)
 	if item:getType() == "CassettePlayer" then
 		context:addOption(getText("IGUI_invpanel_Inspect"), player, InitWalkmanItem, item);
 	elseif item:getType() == "Cassette" then
-		context:addOption(getText("IGUI_invpanel_Inspect"), InitCassetteItem, item);
+		context:addOption(getText("IGUI_invpanel_Inspect"), player, InitCassetteItem, item);
 	end
 end
 

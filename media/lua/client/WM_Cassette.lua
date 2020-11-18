@@ -1,7 +1,7 @@
 CASSETTE_TAPE = {};
 
 -- Initialize cassette item by assigning a random tape number
-function InitCassetteItem(item)
+function InitCassetteItem(player, item)
 
 	local data = item:getModData();
 
