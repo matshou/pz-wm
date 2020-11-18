@@ -11,7 +11,7 @@ function Recipe_InsertBatteryIntoCassettePlayer_TestIsValid(sourceItem, result)
 end
 
 --- Test if cassette player has battery power left ---
-function Recipe_RemoveBatteryIntoCassettePlayer_TestIsValid(sourceItem, result)
+function Recipe_RemoveBatteryFromCassettePlayer_TestIsValid(sourceItem, result)
 	return sourceItem:getUsedDelta() > 0;
 end
 
@@ -38,7 +38,7 @@ function Recipe_InsertBatteryIntoCassettePlayer(items, result, player)
 	result:CopyModData(device:getModData());
 end
 
-function Recipe_RemoveBatteryIntoCassettePlayer(items, result, player)
+function Recipe_RemoveBatteryFromCassettePlayer(items, result, player)
 
 	local device = items:get(0);
 

@@ -25,8 +25,8 @@ module WM
 		Category:Device,
 		NeedToBeLearn:false,
 		CanBeDoneFromFloor:false,
-		OnTest:Recipe_RemoveBatteryIntoCassettePlayer_TestIsValid,
-		OnCreate:Recipe_RemoveBatteryIntoCassettePlayer,
+		OnTest:Recipe_RemoveBatteryFromCassettePlayer_TestIsValid,
+		OnCreate:Recipe_RemoveBatteryFromCassettePlayer,
 	}
 
 	recipe Insert Cassette into Walkman
