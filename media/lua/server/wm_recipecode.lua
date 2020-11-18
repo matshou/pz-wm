@@ -15,6 +15,16 @@ function Recipe_RemoveBatteryFromCassettePlayer_TestIsValid(sourceItem, result)
 	return sourceItem:getUsedDelta() > 0;
 end
 
+--- Test if cassette player is turned off ---
+function Recipe_TurnOnCassettePlayer_TestIsValid(sourceItem, result)
+	return not sourceItem:getModData().power_state;
+end
+
+--- Test if cassette player is turned on ---
+function Recipe_TurnOffCassettePlayer_TestIsValid(sourceItem, result)
+	return sourceItem:getModData().power_state;
+end
+
 --- Test if cassette player has no tape inserted ---
 function Recipe_InsertCassetteIntoCassettePlayer_TestIsValid(sourceItem, result)
 
@@ -45,6 +55,18 @@ function Recipe_RemoveBatteryFromCassettePlayer(items, result, player)
 	-- transfer power from cassette player to battery
 	result:setUsedDelta(device:getUsedDelta());
 	device:setUsedDelta(0);
+end
+
+function Recipe_TurnOnCassettePlayer(items, result, player)
+
+	result:CopyModData(items:get(0):getModData());
+	result:getModData().power_state = true;
+end
+
+function Recipe_TurnOffCassettePlayer(items, result, player)
+
+	result:CopyModData(items:get(0):getModData());
+	result:getModData().power_state = false;
 end
 
 function Recipe_InsertCassetteIntoCassettePlayer(items, result, player)
