@@ -2,7 +2,7 @@ local function AddContextOption(player, context, item)
 
 	if item:getType() == "CassettePlayer" then
 		context:addOption(getText("IGUI_invpanel_Inspect"), player, InitWalkmanItem, item);
-	elseif item:getType() == "Cassette" then
+	elseif item:getType() == "Cassette" and not item:hasModData() then
 		context:addOption(getText("IGUI_invpanel_Inspect"), player, InitCassetteItem, item);
 	end
 end
