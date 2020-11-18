@@ -1,11 +1,11 @@
-
 -- height of custom tooltip line
 local TT_LINE_HEIGHT = 15;
 
 -- tooltip colors in RGB format (0-100)
 local TT_COLOR = {
-	[1] = { 0.4, 0.7, 1 },		-- power on
-	[2] = { 0.5, 0.5, 0.5 },	-- power off
+	[1] = { 0.4, 0.7, 1 },		-- blue
+	[2] = { 0.5, 0.5, 0.5 },	-- grey
+	[3] = { 1, 0.6, 0.2 },		-- orange
 }
 -- cassette player tape state
 local TAPE_STATE = {
@@ -15,12 +15,12 @@ local TAPE_STATE = {
 local old_render = ISToolTipInv.render;
 function ISToolTipInv:render()
 
-	local item = self.item;
-	if item and item:getType() == "Walkman" then
+	local item_name = self.item:getType();
+	local data = self.item:getModData();
 
-		local data = item:getModData();
+	if item_name == "Walkman" then
+
 		local tape_state = TAPE_STATE[data.tape_state];
-
 		local tt_lines, tt_title, tt_state;
 
 		if data.power_state then
