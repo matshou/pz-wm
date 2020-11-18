@@ -1,5 +1,9 @@
 # assets
 media/sound/*
 
+# library
+.zomboid/*
+!.zomboid/*.iml
+
 # projects
 *.xcf
