@@ -69,6 +69,19 @@ module WM
 		OnCreate:Recipe_InsertCassetteIntoCassettePlayer,
 	}
 
+	recipe Eject Cassette from Walkman
+	{
+		keep Walkman,
+		Result:Cassette,
+
+		Time:30.0,
+		Category:Device,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:false,
+		OnTest:Recipe_EjectCassetteFromCassettePlayer_TestIsValid,
+		OnCreate:Recipe_EjectCassetteFromCassettePlayer,
+	}
+
 	recipe Remove Cassette from Case
 	{
 		destroy CassetteCaseFull,

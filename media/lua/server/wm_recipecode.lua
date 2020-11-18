@@ -35,6 +35,11 @@ function Recipe_InsertCassetteIntoCassettePlayer_TestIsValid(sourceItem, result)
 	end
 end
 
+--- Test if cassette player has tape inserted ---
+function Recipe_EjectCassetteFromCassettePlayer_TestIsValid(sourceItem, result)
+	return isCassetteInserted(sourceItem:getModData());
+end
+
 ------------------- Recipe Functions -------------------
 
 function Recipe_InsertBatteryIntoCassettePlayer(items, result, player)
@@ -79,6 +84,18 @@ function Recipe_InsertCassetteIntoCassettePlayer(items, result, player)
 
 	wm_data.tape_num = tape_data.num;
 	wm_data.track_num = tape_data.track;
+end
+
+function Recipe_EjectCassetteFromCassettePlayer(items, result, player)
+
+	local deviceData = items:get(0):getModData();
+	local casData = result:getModData();
+
+	casData.num = deviceData.tape_num;
+	casData.track = deviceData.track_num;
+
+	deviceData.tape_num = 0;
+	deviceData.track_num = 0;
 end
 
 function Recipe_RemoveCassetteFromCase(items, result, player)
