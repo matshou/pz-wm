@@ -4,6 +4,9 @@ local TT_FONT = UIFont.Small;
 -- height of custom tooltip line
 local TT_LINE_HEIGHT = 15;
 
+-- used to adjust tooltip width
+local TT_WIDTH_OFFSET = 25;
+
 -- tooltip colors in RGB format (0-100)
 local TT_COLOR = {
 	[1] = { 0.4, 0.7, 1 },		-- blue
@@ -15,6 +18,11 @@ local TAPE_STATE = {
 	[1] = { "Ready", 0.4, 0.7, 1 },
 	[2] = { "Playing", 1, 0.6, 0.2 },
 }
+-- return text width (x axis) for given text
+function getTextWidth(font, text)
+	return getTextManager():MeasureStringX(font, text);
+end
+
 local old_render = ISToolTipInv.render;
 function ISToolTipInv:render()
 
@@ -49,10 +57,18 @@ function ISToolTipInv:render()
 			end
 			return old_setHeight(self, num, ...);
 		end
+		local old_setWidth = self.setWidth
+		self.setWidth = function(self, num, ...)
+			if stage == 2 then
+				local text_width = getTextWidth(TT_FONT, tt_title);
+				stage, num = 3, math.max(num, text_width + TT_WIDTH_OFFSET);
+			end
+			return old_setWidth(self, num, ...);
+		end
 
 		local old_drawRectBorder = self.drawRectBorder
 		self.drawRectBorder = function(self, ...)
-			if stage == 2 then
+			if stage == 3 then
 				local r, g, b = tt_color[1], tt_color[2], tt_color[3];
 				-- tape name
 				if tt_lines >= 1 then
@@ -64,7 +80,7 @@ function ISToolTipInv:render()
 					self.tooltip:DrawText(UIFont.Small, tt_state, 5, height+11, r, g, b, 1);
 				end
 				-- end drawing tooltip
-				stage = 3;
+				stage = 4;
 			end
 			return old_drawRectBorder(self, ...);
 		end
@@ -84,17 +100,28 @@ function ISToolTipInv:render()
 			end
 			return old_setHeight(self, num, ...);
 		end
+		local old_setWidth = self.setWidth
+		self.setWidth = function(self, num, ...)
+			if stage == 2 then
+				local text_width = math.max(
+						getTextWidth(TT_FONT, tt_text_artist),
+						getTextWidth(TT_FONT, tt_text_album)
+				);
+				stage, num = 3, math.max(num, text_width + TT_WIDTH_OFFSET);
+			end
+			return old_setWidth(self, num, ...);
+		end
 
 		local old_drawRectBorder = self.drawRectBorder
 		self.drawRectBorder = function(self, ...)
-			if stage == 2 then
+			if stage == 3 then
 				local r, g, b = TT_COLOR[3][1], TT_COLOR[3][2], TT_COLOR[3][3];
 				-- artist name
 				self.tooltip:DrawText(TT_FONT, tt_text_artist, 5, height-4, r, g, b, 1);
 				-- album title
 				self.tooltip:DrawText(TT_FONT, tt_text_album, 5, height+11, r, g, b, 1);
 				-- end drawing tooltip
-				stage = 3;
+				stage = 4;
 			end
 			return old_drawRectBorder(self, ...);
 		end
