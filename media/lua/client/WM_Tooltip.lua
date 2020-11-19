@@ -1,3 +1,6 @@
+-- font used by mod for UI tooltips
+local TT_FONT = UIFont.Small;
+
 -- height of custom tooltip line
 local TT_LINE_HEIGHT = 15;
 
@@ -25,8 +28,8 @@ function ISToolTipInv:render()
 
 		if data.power_state then
 			tt_color = TT_COLOR[1];
-			if isCassetteInserted(data) then
-				tt_title = tostring("Tape: " .. getCassetteName(data.tape_num));
+			if Walkman.isCassetteInserted(data) then
+				tt_title = tostring("Tape: " .. Cassette.getName(data.tape_num));
 				tt_state = tostring(tape_state[1] .. ": Track " .. data.track_num);
 				tt_lines = 2;
 			else
@@ -67,8 +70,8 @@ function ISToolTipInv:render()
 		end
 	elseif item_name == "Cassette" and self.item:hasModData() then
 
-		local tt_text_artist = tostring("Artist: " .. CASSETTE_TAPE[data.num].artist_name);
-		local tt_text_album = tostring("Album: " .. CASSETTE_TAPE[data.num].album_title);
+		local tt_text_artist = tostring("Artist: " .. Cassette.getArtist(data.num));
+		local tt_text_album = tostring("Album: " .. Cassette.getAlbum(data.num));
 
 		local stage, height = 1, 0;
 		local tt_height = 2 * TT_LINE_HEIGHT;
@@ -87,9 +90,9 @@ function ISToolTipInv:render()
 			if stage == 2 then
 				local r, g, b = TT_COLOR[3][1], TT_COLOR[3][2], TT_COLOR[3][3];
 				-- artist name
-				self.tooltip:DrawText(UIFont.Small, tt_text_artist, 5, height-4, r, g, b, 1);
+				self.tooltip:DrawText(TT_FONT, tt_text_artist, 5, height-4, r, g, b, 1);
 				-- album title
-				self.tooltip:DrawText(UIFont.Small, tt_text_album, 5, height+11, r, g, b, 1);
+				self.tooltip:DrawText(TT_FONT, tt_text_album, 5, height+11, r, g, b, 1);
 				-- end drawing tooltip
 				stage = 3;
 			end

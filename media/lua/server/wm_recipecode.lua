@@ -17,19 +17,20 @@ end
 
 --- Test if cassette player is turned off ---
 function Recipe_TurnOnCassettePlayer_TestIsValid(sourceItem, result)
-	return not getOrInitWalkmanData(sourceItem).power_state;
+	return not Walkman.getOrInitData(sourceItem).power_state;
 end
 
 --- Test if cassette player is turned on ---
 function Recipe_TurnOffCassettePlayer_TestIsValid(sourceItem, result)
-	return getOrInitWalkmanData(sourceItem).power_state;
+	return Walkman.getOrInitData(sourceItem).power_state;
 end
 
 --- Test if cassette player has no tape inserted ---
 function Recipe_InsertCassetteIntoCassettePlayer_TestIsValid(sourceItem, result)
 
 	if sourceItem:getType() == "Walkman" then
-		return not isCassetteInserted(getOrInitWalkmanData(sourceItem));
+		local data = Walkman.getOrInitData(sourceItem);
+		return not Walkman.isCassetteInserted(data);
 	else
 		return true; -- the cassette
 	end
@@ -37,7 +38,9 @@ end
 
 --- Test if cassette player has tape inserted ---
 function Recipe_EjectCassetteFromCassettePlayer_TestIsValid(sourceItem, result)
-	return isCassetteInserted(getOrInitWalkmanData(sourceItem));
+
+	local data = Walkman.getOrInitData(sourceItem);
+	return Walkman.isCassetteInserted(data);
 end
 
 ------------------- Recipe Functions -------------------
@@ -50,7 +53,7 @@ function Recipe_InsertBatteryIntoCassettePlayer(items, result, player)
 	device:setUsedDelta(battery:getUsedDelta());
 
 	-- copy mod data from ingredient to result
-	result:CopyModData(getOrInitWalkmanData(device));
+	result:CopyModData(Walkman.getOrInitData(device));
 end
 
 function Recipe_RemoveBatteryFromCassettePlayer(items, result, player)
@@ -64,23 +67,23 @@ end
 
 function Recipe_TurnOnCassettePlayer(items, result, player)
 
-	result:CopyModData(getOrInitWalkmanData(items:get(0)));
+	result:CopyModData(Walkman.getOrInitData(items:get(0)));
 	result:getModData().power_state = true;
 end
 
 function Recipe_TurnOffCassettePlayer(items, result, player)
 
-	result:CopyModData(getOrInitWalkmanData(items:get(0)));
+	result:CopyModData(Walkman.getOrInitData(items:get(0)));
 	result:getModData().power_state = false;
 end
 
 function Recipe_InsertCassetteIntoCassettePlayer(items, result, player)
 
 	local tape = items:get(0);
-	result:CopyModData(getOrInitWalkmanData(items:get(1)));
+	result:CopyModData(Walkman.getOrInitData(items:get(1)));
 
 	local wm_data = result:getModData();
-	local tape_data = getOrInitCassetteData(tape);
+	local tape_data = Cassette.getOrInitData(tape);
 
 	wm_data.tape_num = tape_data.num;
 	wm_data.track_num = tape_data.track;
@@ -88,7 +91,7 @@ end
 
 function Recipe_EjectCassetteFromCassettePlayer(items, result, player)
 
-	local deviceData = getOrInitWalkmanData(items:get(0));
+	local deviceData = Walkman.getOrInitData(items:get(0));
 	local casData = result:getModData();
 
 	casData.num = deviceData.tape_num;
@@ -101,5 +104,5 @@ end
 function Recipe_RemoveCassetteFromCase(items, result, player)
 
 	player:getInventory():AddItem("WM.CassetteCaseEmpty");
-	InitCassetteItem(result);
+	Cassette.Init(result);
 end
