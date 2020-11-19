@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.zomboid/.zomboid.iml" filepath="$PROJECT_DIR$/.zomboid/.zomboid.iml" />
+      <module fileurl="file://$USER_HOME$/Documents/GitHub/project_zomboid/project_zomboid.iml" filepath="$USER_HOME$/Documents/GitHub/project_zomboid/project_zomboid.iml" />
       <module fileurl="file://$PROJECT_DIR$/pz-wm.iml" filepath="$PROJECT_DIR$/pz-wm.iml" />
     </modules>
   </component>
