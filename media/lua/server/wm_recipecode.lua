@@ -17,19 +17,19 @@ end
 
 --- Test if cassette player is turned off ---
 function Recipe_TurnOnCassettePlayer_TestIsValid(sourceItem, result)
-	return not sourceItem:getModData().power_state;
+	return not getOrInitWalkmanData(sourceItem).power_state;
 end
 
 --- Test if cassette player is turned on ---
 function Recipe_TurnOffCassettePlayer_TestIsValid(sourceItem, result)
-	return sourceItem:getModData().power_state;
+	return getOrInitWalkmanData(sourceItem).power_state;
 end
 
 --- Test if cassette player has no tape inserted ---
 function Recipe_InsertCassetteIntoCassettePlayer_TestIsValid(sourceItem, result)
 
 	if sourceItem:getType() == "Walkman" then
-		return not isCassetteInserted(sourceItem:getModData());
+		return not isCassetteInserted(getOrInitWalkmanData(sourceItem));
 	else
 		return true; -- the cassette
 	end
@@ -37,7 +37,7 @@ end
 
 --- Test if cassette player has tape inserted ---
 function Recipe_EjectCassetteFromCassettePlayer_TestIsValid(sourceItem, result)
-	return isCassetteInserted(sourceItem:getModData());
+	return isCassetteInserted(getOrInitWalkmanData(sourceItem));
 end
 
 ------------------- Recipe Functions -------------------
@@ -50,7 +50,7 @@ function Recipe_InsertBatteryIntoCassettePlayer(items, result, player)
 	device:setUsedDelta(battery:getUsedDelta());
 
 	-- copy mod data from ingredient to result
-	result:CopyModData(device:getModData());
+	result:CopyModData(getOrInitWalkmanData(device));
 end
 
 function Recipe_RemoveBatteryFromCassettePlayer(items, result, player)
@@ -64,23 +64,23 @@ end
 
 function Recipe_TurnOnCassettePlayer(items, result, player)
 
-	result:CopyModData(items:get(0):getModData());
+	result:CopyModData(getOrInitWalkmanData(items:get(0)));
 	result:getModData().power_state = true;
 end
 
 function Recipe_TurnOffCassettePlayer(items, result, player)
 
-	result:CopyModData(items:get(0):getModData());
+	result:CopyModData(getOrInitWalkmanData(items:get(0)));
 	result:getModData().power_state = false;
 end
 
 function Recipe_InsertCassetteIntoCassettePlayer(items, result, player)
 
 	local tape = items:get(0);
-	result:CopyModData(items:get(1):getModData());
+	result:CopyModData(getOrInitWalkmanData(items:get(1)));
 
 	local wm_data = result:getModData();
-	local tape_data = tape:hasModData() and tape:getModData() or InitCassetteItem(tape);
+	local tape_data = getOrInitCassetteData(tape);
 
 	wm_data.tape_num = tape_data.num;
 	wm_data.track_num = tape_data.track;
@@ -88,7 +88,7 @@ end
 
 function Recipe_EjectCassetteFromCassettePlayer(items, result, player)
 
-	local deviceData = items:get(0):getModData();
+	local deviceData = getOrInitWalkmanData(items:get(0));
 	local casData = result:getModData();
 
 	casData.num = deviceData.tape_num;

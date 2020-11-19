@@ -1,3 +1,9 @@
+-- return available mod data or newly initialized mod data
+-- helper method to prevent items spawned through command having no data
+function getOrInitWalkmanData(item)
+	return item:hasModData() and item:getModData() or InitWalkmanItem(getSpecificPlayer(0), item);
+end
+
 function isCassetteInserted(data)
 	return data and data.tape_num > 0;
 end

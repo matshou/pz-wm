@@ -1,5 +1,9 @@
 CASSETTE_TAPE = {};
 
+function getOrInitCassetteData(item)
+	return item:hasModData() and item:getModData() or InitCassetteItem(nil, item);
+end
+
 -- Initialize cassette item by assigning a random tape number
 function InitCassetteItem(player, item)
 
