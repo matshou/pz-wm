@@ -40,6 +40,20 @@ function Recipe_TurnOffCassettePlayer_TestIsValid(sourceItem, result)
 	return Walkman.isPoweredOn(data);
 end
 
+--- Test if cassette player is turned on and ready to play ---
+function Recipe_PlayCassettePlayer_TestIsValid(sourceItem, result)
+
+	local data = Walkman.getOrInitData(sourceItem);
+	return Walkman.isPoweredOn(data) and
+			Walkman.isCassetteInserted(data) and
+			not Walkman.isPlaying(data);
+end
+
+--- Test if cassette player is currently playing ---
+function Recipe_StopCassettePlayer_TestIsValid(sourceItem, result)
+	return Walkman.getOrInitData(sourceItem).tape_state == 1;
+end
+
 --- Test if cassette player has no tape inserted ---
 function Recipe_InsertCassetteIntoCassettePlayer_TestIsValid(sourceItem, result)
 
@@ -86,6 +100,14 @@ end
 
 function Recipe_TurnOffCassettePlayer(items, result, player)
 	copyWalkmanData(items:get(0), result).power_state = 0;
+end
+
+function Recipe_PlayCassettePlayer(items, result, player)
+	copyWalkmanData(items:get(0), result).play_state = 1;
+end
+
+function Recipe_StopCassettePlayer(items, result, player)
+	copyWalkmanData(items:get(0), result).play_state = 0;
 end
 
 function Recipe_InsertCassetteIntoCassettePlayer(items, result, player)

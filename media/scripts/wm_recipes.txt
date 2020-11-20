@@ -55,6 +55,32 @@ module WM
 		OnCreate:Recipe_TurnOffCassettePlayer,
 	}
 
+	recipe Play Walkman
+    {
+        destroy Walkman,
+        Result:Walkman,
+
+        Time:10.0,
+        Category:Device,
+        NeedToBeLearn:false,
+        CanBeDoneFromFloor:false,
+        OnTest:Recipe_PlayCassettePlayer_TestIsValid,
+        OnCreate:Recipe_PlayCassettePlayer,
+    }
+
+	recipe Stop Walkman
+    {
+        destroy Walkman,
+        Result:Walkman,
+
+        Time:10.0,
+        Category:Device,
+        NeedToBeLearn:false,
+        CanBeDoneFromFloor:false,
+        OnTest:Recipe_StopCassettePlayer_TestIsValid,
+        OnCreate:Recipe_StopCassettePlayer,
+    }
+
 	recipe Insert Cassette into Walkman
 	{
 		destroy Cassette,
