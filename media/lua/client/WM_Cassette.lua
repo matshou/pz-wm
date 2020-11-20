@@ -6,7 +6,7 @@ function Cassette.getOrInitData(item)
 end
 
 -- Initialize cassette item by assigning a random tape number
-function Cassette.Init(player, item)
+function Cassette.Init(_, item)
 
 	local data = item:getModData();
 

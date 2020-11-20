@@ -18,7 +18,7 @@ function Walkman.isPoweredOn(data)
 	return data and data.power_state == 1;
 end
 
-function Walkman.Init(player, item)
+function Walkman.Init(_, item)
 
 	local data = item:getModData();
 

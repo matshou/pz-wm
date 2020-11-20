@@ -13,7 +13,7 @@ local inspectContextMenu = function(player, context, worldobjects)
 
     local playerObj = getSpecificPlayer(player);
 
-    for i,k in pairs(worldobjects) do
+    for _,k in pairs(worldobjects) do
 		-- inventory item list
         if instanceof(k, "InventoryItem") then
             AddContextOption(playerObj, context, k);
