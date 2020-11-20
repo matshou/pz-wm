@@ -1,3 +1,16 @@
+---------------- Recipe Helper Functions ----------------
+
+--- Copy walkman data from first to second table
+local function copyWalkmanData(from, to)
+
+	local data_to_copy = Walkman.getOrInitData(from);
+
+	to:CopyModData(data_to_copy);
+	to:setUsedDelta(from:getUsedDelta());
+
+	return data_to_copy;
+end
+
 ----------------- Recipe TEST Functions -----------------
 
 --- Test if cassette player has no battery power left ---
@@ -49,11 +62,11 @@ function Recipe_InsertBatteryIntoCassettePlayer(items, result, player)
 
 	local battery, device = items:get(0), items:get(1);
 
+	-- copy mod data from ingredient to result
+	copyWalkmanData(device, result);
+
 	-- transfer battery power to cassette player
 	device:setUsedDelta(battery:getUsedDelta());
-
-	-- copy mod data from ingredient to result
-	result:CopyModData(Walkman.getOrInitData(device));
 end
 
 function Recipe_RemoveBatteryFromCassettePlayer(items, result, player)
@@ -66,24 +79,17 @@ function Recipe_RemoveBatteryFromCassettePlayer(items, result, player)
 end
 
 function Recipe_TurnOnCassettePlayer(items, result, player)
-
-	result:CopyModData(Walkman.getOrInitData(items:get(0)));
-	result:getModData().power_state = true;
+	copyWalkmanData(items:get(0), result).power_state = true;
 end
 
 function Recipe_TurnOffCassettePlayer(items, result, player)
-
-	result:CopyModData(Walkman.getOrInitData(items:get(0)));
-	result:getModData().power_state = false;
+	copyWalkmanData(items:get(0), result).power_state = false;
 end
 
 function Recipe_InsertCassetteIntoCassettePlayer(items, result, player)
 
-	local tape = items:get(0);
-	result:CopyModData(Walkman.getOrInitData(items:get(1)));
-
-	local wm_data = result:getModData();
-	local tape_data = Cassette.getOrInitData(tape);
+	local wm_data = copyWalkmanData(items:get(1), result);
+	local tape_data = Cassette.getOrInitData(items:get(0));
 
 	wm_data.tape_num = tape_data.num;
 	wm_data.track_num = tape_data.track;
