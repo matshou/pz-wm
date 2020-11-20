@@ -9,18 +9,16 @@ local function AddContextOption(player, context, item)
     end
 end
 
-local inspectContextMenu = function(player, context, worldobjects)
+Events.OnFillInventoryObjectContextMenu.Add(function(player, context, worldobjects)
 
     local playerObj = getSpecificPlayer(player);
 
     for _,k in pairs(worldobjects) do
-		-- inventory item list
+        -- inventory item list
         if instanceof(k, "InventoryItem") then
             AddContextOption(playerObj, context, k);
-		elseif k.items and #k.items > 1 then
+        elseif k.items and #k.items > 1 then
             AddContextOption(playerObj, context, k.items[1]);
         end
     end
-end
-
-Events.OnFillInventoryObjectContextMenu.Add(inspectContextMenu);
+end);
