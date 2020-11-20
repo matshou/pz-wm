@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="ProjectZomboid">
+    <CLASSES>
+      <root url="file://$STEAM_DIR$/steamapps/common/ProjectZomboid" />
+    </CLASSES>
+    <JAVADOC />
+    <NATIVE>
+      <root url="file://$STEAM_DIR$/steamapps/common/ProjectZomboid" />
+    </NATIVE>
+    <SOURCES />
+    <jarDirectory url="file://$STEAM_DIR$/steamapps/common/ProjectZomboid" recursive="false" />
+  </library>
+</component>
