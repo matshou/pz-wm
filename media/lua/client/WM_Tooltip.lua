@@ -31,10 +31,10 @@ function ISToolTipInv:render()
 
 	if item_name == "Walkman" and self.item:hasModData() then
 
-		local tape_state = TAPE_STATE[data.tape_state];
+		local tape_state = TAPE_STATE[data.play_state + 1];
 		local tt_lines, tt_title, tt_state;
 
-		if data.power_state then
+		if Walkman.isPoweredOn(data) then
 			tt_color = TT_COLOR[1];
 			if Walkman.isCassetteInserted(data) then
 				tt_title = tostring("Tape: " .. Cassette.getName(data.tape_num));

@@ -30,12 +30,14 @@ end
 function Recipe_TurnOnCassettePlayer_TestIsValid(sourceItem, result)
 
 	local data = Walkman.getOrInitData(sourceItem);
-	return sourceItem:getUsedDelta() > 0 and not data.power_state;
+	return sourceItem:getUsedDelta() > 0 and not Walkman.isPoweredOn(data);
 end
 
 --- Test if cassette player is turned on ---
 function Recipe_TurnOffCassettePlayer_TestIsValid(sourceItem, result)
-	return Walkman.getOrInitData(sourceItem).power_state;
+
+	local data = Walkman.getOrInitData(sourceItem);
+	return Walkman.isPoweredOn(data);
 end
 
 --- Test if cassette player has no tape inserted ---
@@ -79,11 +81,11 @@ function Recipe_RemoveBatteryFromCassettePlayer(items, result, player)
 end
 
 function Recipe_TurnOnCassettePlayer(items, result, player)
-	copyWalkmanData(items:get(0), result).power_state = true;
+	copyWalkmanData(items:get(0), result).power_state = 1;
 end
 
 function Recipe_TurnOffCassettePlayer(items, result, player)
-	copyWalkmanData(items:get(0), result).power_state = false;
+	copyWalkmanData(items:get(0), result).power_state = 0;
 end
 
 function Recipe_InsertCassetteIntoCassettePlayer(items, result, player)
