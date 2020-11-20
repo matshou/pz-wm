@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="PZGameLua" type="Lua">
+    <CLASSES>
+      <root url="file://$STEAM_DIR$/steamapps/common/ProjectZomboid/media/lua" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
