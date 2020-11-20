@@ -99,7 +99,9 @@ function Recipe_TurnOnCassettePlayer(items, result, player)
 end
 
 function Recipe_TurnOffCassettePlayer(items, result, player)
-	copyWalkmanData(items:get(0), result).power_state = 0;
+
+	local data = copyWalkmanData(items:get(0), result);
+	data.power_state, data.play_state = 0, 0;
 end
 
 function Recipe_PlayCassettePlayer(items, result, player)
