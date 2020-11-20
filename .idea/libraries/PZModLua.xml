@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="PZModLua" type="Lua">
+    <CLASSES>
+      <root url="file://$USER_HOME$/Documents/GitHub/pz-lua" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
