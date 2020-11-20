@@ -28,9 +28,11 @@ function Recipe_RemoveBatteryFromCassettePlayer_TestIsValid(sourceItem, result)
 	return sourceItem:getUsedDelta() > 0;
 end
 
---- Test if cassette player is turned off ---
+--- Test if cassette player is turned off and has delta ---
 function Recipe_TurnOnCassettePlayer_TestIsValid(sourceItem, result)
-	return not Walkman.getOrInitData(sourceItem).power_state;
+
+	local data = Walkman.getOrInitData(sourceItem);
+	return sourceItem:getUsedDelta() > 0 and not data.power_state;
 end
 
 --- Test if cassette player is turned on ---
