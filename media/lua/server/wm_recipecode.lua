@@ -131,6 +131,7 @@ function Recipe_EjectCassetteFromCassettePlayer(items, result, player)
 
 	deviceData.tape_num = 0;
 	deviceData.track_num = 0;
+	deviceData.play_state = 0;
 end
 
 function Recipe_RemoveCassetteFromCase(items, result, player)
