@@ -34,7 +34,7 @@ module WM
 		destroy Walkman,
 		Result:Walkman,
 
-		Time:5.0,
+		Time:10.0,
 		Category:Device,
 		NeedToBeLearn:false,
 		CanBeDoneFromFloor:false,
@@ -47,7 +47,7 @@ module WM
 		destroy Walkman,
 		Result:Walkman,
 
-		Time:5.0,
+		Time:10.0,
 		Category:Device,
 		NeedToBeLearn:false,
 		CanBeDoneFromFloor:false,
