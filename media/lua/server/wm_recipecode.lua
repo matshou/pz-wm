@@ -3,12 +3,10 @@
 --- Copy walkman data from first to second table
 local function copyWalkmanData(from, to)
 
-	local data_to_copy = Walkman.getOrInitData(from);
-
-	to:CopyModData(data_to_copy);
+	to:CopyModData(Walkman.getOrInitData(from));
 	to:setUsedDelta(from:getUsedDelta());
 
-	return data_to_copy;
+	return to:getModData();
 end
 
 ----------------- Recipe TEST Functions -----------------
