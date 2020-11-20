@@ -12,15 +12,6 @@ module WM
 		Icon				= Walkman,
 	}
 
-	item CassettePlayer
-	{
-		Type				= Normal,
-		DisplayName			= Cassette Player,
-		ScaleWorldIcon		= 0.5,
-		Icon				= Walkman,
-		Weight				= 0.3,
-	}
-
 	item Cassette
 	{
 		Type				= Normal,

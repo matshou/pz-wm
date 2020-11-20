@@ -29,7 +29,7 @@ function ISToolTipInv:render()
 	local item_name = self.item:getType();
 	local data = self.item:getModData();
 
-	if item_name == "Walkman" then
+	if item_name == "Walkman" and self.item:hasModData() then
 
 		local tape_state = TAPE_STATE[data.tape_state];
 		local tt_lines, tt_title, tt_state;

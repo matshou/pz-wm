@@ -3,7 +3,7 @@ Walkman = {};
 -- return available mod data or newly initialized mod data
 -- helper method to prevent items spawned through command having no data
 function Walkman.getOrInitData(item)
-	return item:hasModData() and item:getModData() or InitWalkmanItem(getSpecificPlayer(0), item);
+	return item:hasModData() and item:getModData() or Walkman.Init(getSpecificPlayer(0), item);
 end
 
 function Walkman.isCassetteInserted(data)
@@ -11,11 +11,6 @@ function Walkman.isCassetteInserted(data)
 end
 
 function Walkman.Init(player, item)
-
-	local inventory = player:getInventory();
-
-	inventory:DoRemoveItem(item);
-	item = inventory:AddItem("WM.Walkman");
 
 	local data = item:getModData();
 

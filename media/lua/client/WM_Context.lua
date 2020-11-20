@@ -1,10 +1,12 @@
 local function AddContextOption(player, context, item)
 
-	if item:getType() == "CassettePlayer" then
-		context:addOption(getText("IGUI_invpanel_Inspect"), player, Walkman.Init, item);
-	elseif item:getType() == "Cassette" and not item:hasModData() then
-		context:addOption(getText("IGUI_invpanel_Inspect"), player, Cassette.Init, item);
-	end
+    if not item:hasModData() then
+        if item:getType() == "Walkman" then
+            context:addOption(getText("IGUI_invpanel_Inspect"), player, Walkman.Init, item);
+        elseif item:getType() == "Cassette" then
+            context:addOption(getText("IGUI_invpanel_Inspect"), player, Cassette.Init, item);
+        end
+    end
 end
 
 local inspectContextMenu = function(player, context, worldobjects)
