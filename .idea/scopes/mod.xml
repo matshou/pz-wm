@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="mod" pattern="file[pz-wm]:*.lua||file[pz-wm]:*.txt" />
+</component>

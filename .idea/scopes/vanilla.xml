@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="vanilla" pattern="file[.zomboid]:*.lua||file[.zomboid]:*.txt" />
+</component>
