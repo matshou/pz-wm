@@ -51,7 +51,7 @@ end
 
 --- Test if cassette player is currently playing ---
 function Recipe_StopCassettePlayer_TestIsValid(sourceItem, result)
-	return Walkman.getOrInitData(sourceItem).tape_state == 1;
+	return Walkman.getOrInitData(sourceItem).play_state == 1;
 end
 
 --- Test if cassette player has no tape inserted ---
