@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="RunClient" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="zombie.gameStates.MainScreenState" />
+    <module name="pz-java" />
+    <option name="VM_PARAMETERS" value="-Dzomboid.steam=1 -Dzomboid.znetlog=1 -XX:+UseConcMarkSweepGC -XX:-CreateMinidumpOnCrash -XX:-OmitStackTraceInFastThrow -Xms1800m -Xmx2048m" />
+    <option name="WORKING_DIRECTORY" value="$STEAM_DIR$/steamapps/common/ProjectZomboid" />
+    <method v="2" />
+  </configuration>
+</component>
