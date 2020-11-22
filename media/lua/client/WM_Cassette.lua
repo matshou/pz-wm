@@ -43,5 +43,3 @@ end
 function Cassette.getAlbum(tape)
 	return CASSETTE_TAPE[tape].album_title;
 end
-
-end
