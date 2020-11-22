@@ -1,5 +1,9 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+
+# More ignored files
+/libraries/
+/modules.xml
 /discord.xml
 /misc.xml
