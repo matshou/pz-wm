@@ -7,16 +7,15 @@ local TT_LINE_HEIGHT = 15;
 -- used to adjust tooltip width
 local TT_WIDTH_OFFSET = 25;
 
--- tooltip colors in RGB format (0-100)
-local TT_COLOR = {
-	[1] = { 0.4, 0.7, 1 },		-- blue
-	[2] = { 0.5, 0.5, 0.5 },	-- grey
-	[3] = { 1, 0.6, 0.2 },		-- orange
+TooltipColor = {
+	blue = { 0.4, 0.7, 1 },
+	grey = { 0.5, 0.5, 0.5 },
+	orange = { 1, 0.6, 0.2 },
 }
 -- cassette player tape state
 local TAPE_STATE = {
-	[1] = { "Ready", 0.4, 0.7, 1 },
-	[2] = { "Playing", 1, 0.6, 0.2 },
+	[1] = { "Ready", TooltipColor.blue },
+	[2] = { "Playing", TooltipColor.orange },
 }
 -- return text width (x axis) for given text
 function getTextWidth(font, text)
@@ -32,19 +31,19 @@ function ISToolTipInv:render()
 	if item_name == "Walkman" and self.item:hasModData() then
 
 		local tape_state = TAPE_STATE[data.play_state + 1];
-		local tt_lines, tt_title, tt_state;
+		local tt_lines, tt_title, tt_state, tt_color;
 
 		if Walkman.isPoweredOn(data) then
-			tt_color = TT_COLOR[1];
+			tt_color = TooltipColor.blue
 			if Walkman.isCassetteInserted(data) then
-				tt_title = tostring("Tape: " .. Cassette.getName(data.tape_num));
+				tt_title = tostring("Tape: " .. Cassette.getTape(data.tape_num));
 				tt_state = tostring(tape_state[1] .. ": Track " .. data.track_num);
 				tt_lines = 2;
 			else
 				tt_lines, tt_title = 1, "Insert cassette tape";
 			end
 		else
-			tt_lines, tt_color = 1, TT_COLOR[2];
+			tt_lines, tt_color = 1, TooltipColor.grey;
 			tt_title = "Turned off";
 		end
 
@@ -86,6 +85,8 @@ function ISToolTipInv:render()
 		end
 	elseif item_name == "Cassette" and self.item:hasModData() then
 
+		local tt_color = TooltipColor.orange;
+
 		local tt_text_artist = tostring("Artist: " .. Cassette.getArtist(data.num));
 		local tt_text_album = tostring("Album: " .. Cassette.getAlbum(data.num));
 
@@ -115,7 +116,7 @@ function ISToolTipInv:render()
 		local old_drawRectBorder = self.drawRectBorder
 		self.drawRectBorder = function(self, ...)
 			if stage == 3 then
-				local r, g, b = TT_COLOR[3][1], TT_COLOR[3][2], TT_COLOR[3][3];
+				local r, g, b = tt_color[1], tt_color[2], tt_color[3];
 				-- artist name
 				self.tooltip:DrawText(TT_FONT, tt_text_artist, 5, height-4, r, g, b, 1);
 				-- album title

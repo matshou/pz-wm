@@ -11,14 +11,11 @@ end
 
 Events.OnFillInventoryObjectContextMenu.Add(function(player, context, worldobjects)
 
-    local playerObj = getSpecificPlayer(player);
-
     for _,k in pairs(worldobjects) do
-        -- inventory item list
         if instanceof(k, "InventoryItem") then
-            AddContextOption(playerObj, context, k);
+            addContextOption(player, context, k);
         elseif k.items and #k.items > 1 then
-            AddContextOption(playerObj, context, k.items[1]);
+            addContextOption(player, context, k.items[1]);
         end
     end
 end);
