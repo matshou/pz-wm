@@ -1,4 +1,8 @@
-local function AddContextOption(player, context, item)
+--- Add context options to inventory menu
+---
+--- @param player IsoPlayer
+--- @param context ISContextMenu
+local function addContextOption(player, context, item)
 
     if not item:hasModData() then
         if item:getType() == "Walkman" then

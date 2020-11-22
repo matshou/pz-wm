@@ -1,23 +1,31 @@
--- font used by mod for UI tooltips
+--- Font used by mod for UI tooltips
+--- @type UIFont
 local TT_FONT = UIFont.Small;
 
--- height of custom tooltip line
+--- Height of custom tooltip line
 local TT_LINE_HEIGHT = 15;
 
--- used to adjust tooltip width
+--- Used to adjust tooltip width
 local TT_WIDTH_OFFSET = 25;
 
+--- Tooltip colors in RGB format (0-100)
+--- @class TooltipColor
 TooltipColor = {
 	blue = { 0.4, 0.7, 1 },
 	grey = { 0.5, 0.5, 0.5 },
 	orange = { 1, 0.6, 0.2 },
 }
--- cassette player tape state
+--- Cassette player tape state
 local TAPE_STATE = {
 	[1] = { "Ready", TooltipColor.blue },
 	[2] = { "Playing", TooltipColor.orange },
 }
--- return text width (x axis) for given text
+
+--- Helper function to measure string width in pixels
+---
+--- @param text string @text to measure
+--- @param font UIFont @font used by text
+--- @return int @text width along x-axis for given text
 function getTextWidth(font, text)
 	return getTextManager():MeasureStringX(font, text);
 end
