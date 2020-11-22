@@ -27,19 +27,21 @@ function Cassette.Init(_, item)
 end
 
 --- @param num int @cassette tape number
---- @return string @name of tape stored under given number
+--- @return string @cassette tape name
 function Cassette.getTape(num)
 	return CASSETTE_TAPE[num].tape_name;
 end
 
---- @param num int @cassette tape number
---- @return string @name of artist for tape stored under given number
-function Cassette.getArtist(num)
-	return CASSETTE_TAPE[num].artist_name;
+--- @param tape int @cassette tape number
+--- @return string @artist name for cassette tape
+function Cassette.getArtist(tape)
+	return CASSETTE_TAPE[tape].artist_name;
 end
 
---- @param num int @cassette tape number
---- @return string @name of album for tape stored under given number
-function Cassette.getAlbum(num)
-	return CASSETTE_TAPE[num].album_title;
+--- @param tape int @cassette tape number
+--- @return string @album name for cassette tape
+function Cassette.getAlbum(tape)
+	return CASSETTE_TAPE[tape].album_title;
+end
+
 end
