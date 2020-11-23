@@ -7,7 +7,7 @@ Walkman = {};
 --- @param item InventoryItem @item to get mod data for
 --- @return KahluaTable @available or newly initialized mod data
 function Walkman.getOrInitData(item)
-	return item:hasModData() and item:getModData() or Walkman.Init(getSpecificPlayer(0), item);
+	return item:hasModData() and item:getModData() or Walkman.init(getSpecificPlayer(0), item);
 end
 
 --- @param data KahluaTable @item mod data table
@@ -32,7 +32,7 @@ end
 ---
 --- @param item InventoryItem @item to initialize
 --- @return KahluaTable @initialized mod data
-function Walkman.Init(_, item)
+function Walkman.init(_, item)
 
 	local data = item:getModData();
 

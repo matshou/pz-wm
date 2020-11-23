@@ -9,14 +9,14 @@ CASSETTE_TAPE = {};
 --- @param item InventoryItem @cassette item
 --- @return KahluaTable @existing or initialized mod data table
 function Cassette.getOrInitData(item)
-	return item:hasModData() and item:getModData() or Cassette.Init(nil, item);
+	return item:hasModData() and item:getModData() or Cassette.init(nil, item);
 end
 
 --- Initialize cassette item by assigning random tape number
 ---
 --- @param item InventoryItem @cassette to initialize
 --- @return KahluaTable @initialized mod data table
-function Cassette.Init(_, item)
+function Cassette.init(_, item)
 
 	local data = item:getModData();
 

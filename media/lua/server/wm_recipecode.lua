@@ -169,5 +169,5 @@ end
 function Recipe_RemoveCassetteFromCase(_, result, player)
 
 	player:getInventory():AddItem("WM.CassetteCaseEmpty");
-	Cassette.Init(result);
+	Cassette.init(result);
 end
